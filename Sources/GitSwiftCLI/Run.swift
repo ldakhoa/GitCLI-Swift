@@ -6,6 +6,12 @@ extension Command {
         switch command {
         case let command as Repo:
             self = .repo
+        case let command as PullRequest:
+            self = .pullRequest
+        case let command as Label:
+            self = .label
+        case let command as Issue:
+            self = .issue
         default:
             return nil
         }

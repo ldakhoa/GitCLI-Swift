@@ -41,9 +41,15 @@ let package = Package(
         ),
         
         .target(
+            name: "Models",
+            dependencies: []
+        ),
+        
+        .target(
             name: "GitSwiftCore",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                "Models"
             ]
         ),
         .testTarget(

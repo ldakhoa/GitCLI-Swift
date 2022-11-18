@@ -3,4 +3,36 @@
 ![GitHub Workflow Status (branch)](https://github.com/ldakhoa/GitCLI-Swift/workflows/test/badge.svg)
 ![GitHub](https://img.shields.io/github/license/ldakhoa/seedee?GitCLI-Swift=flat-square)
 
-WIP
+## WIP
+
+### Repo
+- [ ] Create
+- [ ] Clone
+- [ ] List
+- [ ] Delete
+
+### Pull Request
+- [ ] Create
+- [ ] List
+- [ ] Edit
+- [ ] Status
+- [ ] Review
+- [ ] View
+- [ ] Comment
+- [ ] Close
+- [ ] Checkout
+
+### Label
+- [ ] Create
+- [ ] Delete
+- [ ] Edit
+- [ ] List
+- [ ] Clone
+
+### Issue
+- [ ] Create
+- [ ] Comment
+- [ ] Delete
+- [ ] Edit
+- [ ] List
+- [ ] Status
