@@ -1,3 +1,3 @@
-# swift-gitcli
+# GitCLI
 
-A description of this package.
+WIP
