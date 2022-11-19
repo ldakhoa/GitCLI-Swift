@@ -1,12 +1,8 @@
 import ArgumentParser
-import GitSwiftCore
 
 struct Repo: AsyncParsableCommand {
     public static let configuration = CommandConfiguration(
         abstract: "Work with GitHub repositories",
-        discussion: """
-        gitswift repo clone
-        """,
         subcommands: [
             RepoView.self
         ]

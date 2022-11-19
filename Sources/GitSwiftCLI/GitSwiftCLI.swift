@@ -15,16 +15,6 @@ struct Main: ParsableCommand {
     )
 }
 
-struct PullRequest: ParsableCommand {
-    public static let configuration = CommandConfiguration(
-        commandName: "pr",
-        abstract: "Work with GitHub pull requests",
-        discussion: """
-        gitswift pr
-        """
-    )
-}
-
 struct Label: ParsableCommand {
     public static let configuration = CommandConfiguration(
         abstract: "Work with GitHub labels",

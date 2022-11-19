@@ -10,7 +10,7 @@ extension Command {
         case _ as RepoView:
             let configFile = try configFromFile()
             self = .repo(configFile: configFile)
-        case let command as PullRequest:
+        case _ as PullRequest:
             self = .pullRequest
         case let command as Label:
             self = .label
