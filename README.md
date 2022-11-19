@@ -11,6 +11,11 @@
 - [ ] List
 - [ ] Delete
 
+### Auth
+- [ ] Login
+- [ ] Logout
+- [ ] Hostname
+
 ### Pull Request
 - [ ] Create
 - [ ] List
