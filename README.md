@@ -6,6 +6,7 @@
 ## WIP
 
 ### Repo
+- [x] View
 - [ ] Create
 - [ ] Clone
 - [ ] List
