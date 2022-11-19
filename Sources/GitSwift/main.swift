@@ -1,3 +1,3 @@
 import GitSwiftCLI
 
-run(arguments: Array(CommandLine.arguments.dropFirst()))
+await run(arguments: Array(CommandLine.arguments.dropFirst()))

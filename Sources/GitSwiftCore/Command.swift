@@ -1,5 +1,5 @@
 public enum Command {
-    case repo
+    case repo(configFile: ConfigurationFile)
     case pullRequest
     case label
     case issue

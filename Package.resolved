@@ -10,6 +10,33 @@
       }
     },
     {
+      "identity" : "gitconfig",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftDocOrg/GitConfig",
+      "state" : {
+        "revision" : "8eb1fa56247b91a21e8adf75f5b397fefce593ee",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "networkable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/duytph/Networkable",
+      "state" : {
+        "revision" : "8e514e65d81a8ed7a67f718e3cc9399ce2094be4",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "pathos",
+      "kind" : "remoteSourceControl",
+      "location" : "http://github.com/dduan/Pathos",
+      "state" : {
+        "revision" : "8697a340a25e9974d4bbdee80a4c361c74963c00",
+        "version" : "0.4.2"
+      }
+    },
+    {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
