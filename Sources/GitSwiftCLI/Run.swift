@@ -12,9 +12,9 @@ extension Command {
             self = .repo(configFile: configFile)
         case _ as PullRequest:
             self = .pullRequest
-        case let command as Label:
+        case let command where command is Label:
             self = .label
-        case let command as Issue:
+        case let command where command is Issue:
             self = .issue
         default:
             return nil
