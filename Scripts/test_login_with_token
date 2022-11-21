@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+touch access_token.txt
+# Put real access token to test
+echo "accesstokentestfailedandaddtoaccesstoken" >> access_token.txt
+
+swift run gitswift auth login --with-token access_token.txt
+
+rm -rf access_token.txt
