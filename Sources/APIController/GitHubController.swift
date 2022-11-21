@@ -3,6 +3,9 @@ import Networkable
 import Models
 
 public protocol GitHubControlling {
+    /// Login with token.
+    func loginWithToken() async throws -> User
+    
     /// Get the repository information.
     func repo(owner: String, repo: String) async throws -> Repository
 }
@@ -18,9 +21,17 @@ public final class GitHubController: GitHubControlling {
     
     // MARK: - RemoteGitHubRepository
     
+    public func loginWithToken() async throws -> User {
+        try await parseData(from: .loginWithToken)
+    }
+    
     public func repo(owner: String, repo: String) async throws -> Repository {
-        let request = API.repo(owner: owner, repo: repo)
-        let repo = try await session.data(for: request, decoder: JSONDecoder()) as Repository
-        return repo
+        try await parseData(from: .repo(owner: owner, repo: repo))
+    }
+    
+    // MARK: - Helpers
+    
+    private func parseData<T: Codable>(from request: GitHubController.API) async throws -> T {
+        try await session.data(for: request, decoder: JSONDecoder())
     }
 }

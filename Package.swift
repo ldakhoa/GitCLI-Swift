@@ -50,7 +50,10 @@ let package = Package(
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
                 "APIController",
-                "Models"
+                "ColorizeSwift",
+                "Models",
+                "Pathos",
+                "Utilities",
             ]
         ),
         .testTarget(
@@ -67,8 +70,11 @@ let package = Package(
             name: "APIController",
             dependencies: [
                 "Networkable",
-                "Models"
+                "Models",
+                "Utilities",
             ]
         ),
+        
+        .target(name: "Utilities", dependencies: [])
     ]
 )
