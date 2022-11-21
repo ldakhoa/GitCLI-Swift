@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rm -rf .build
+
+swift build -c release
+
+cd .build/release
+
+cp -f gitswift /usr/local/bin

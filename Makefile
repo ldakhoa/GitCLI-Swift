@@ -9,3 +9,6 @@ test.command:
 
 test.login:
 		sh Scripts/test_login_with_token
+
+install.binary:
+		sh Scripts/install
