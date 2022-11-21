@@ -6,7 +6,8 @@ extension NetworkSession {
         let baseURL = URL(string: "https://api.github.com")
         let requestBuilder = URLRequestBuilder(baseURL: baseURL)
         let logging = LoggingMiddleware(type: .info)
-        let middlewares = [logging]
+        let statusCodeValidation = StatusCodeValidationMiddleware()
+        let middlewares: [Middleware] = [logging, statusCodeValidation]
         let result = NetworkSession(requestBuilder: requestBuilder, middlewares: middlewares)
         return result
     }
