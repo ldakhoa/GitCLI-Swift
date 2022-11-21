@@ -29,7 +29,7 @@ struct AuthInteractor {
             let user = try await controller.loginWithToken()
             UI.success("Login succeed with \(user.name ?? "Unknown")")
         } catch {
-            UI.error("Failed to sign in: \(error)")
+            UI.error("Failed to sign in: \(error.localizedDescription)")
         }
     }
     

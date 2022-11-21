@@ -9,8 +9,8 @@ extension NetworkSession {
         let statusCodeValidation = StatusCodeValidationMiddleware()
         let middlewares: [Middleware] = [
             logging,
-            statusCodeValidation,
             ErrorDecoderMiddleware<GitHubError>(),
+            statusCodeValidation,
         ]
         let result = NetworkSession(requestBuilder: requestBuilder, middlewares: middlewares)
         return result
