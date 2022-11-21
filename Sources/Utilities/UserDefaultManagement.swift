@@ -1,4 +1,3 @@
-
 import Foundation
 
 private struct UserDefaultKeys {
@@ -11,13 +10,10 @@ public final class UserDefaultManagement {
 
     public static var accessToken: String {
         get {
-            if let result = shared?.object(forKey: Keys.accessToken) as? String {
-                return result
-            }
-            return ""
+            shared?.value(forKey: Keys.accessToken) as? String ?? ""
         }
         set {
-            shared?.set(newValue, forKey: Keys.accessToken)
+            shared?.setValue(newValue, forKey: Keys.accessToken)
         }
     }
 }

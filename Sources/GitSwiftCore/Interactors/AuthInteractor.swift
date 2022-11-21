@@ -10,6 +10,7 @@ struct AuthInteractor {
     private let controller: GitHubControlling
     private let fileRepository: FileRepository
     
+    
     init(
         tokenPath: String,
         hostname: String? = nil,
