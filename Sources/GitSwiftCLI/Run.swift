@@ -7,6 +7,8 @@ import Pathos
 extension Command {
     init?(command: ParsableCommand) throws {
         switch command {
+        case let command as AuthLogin:
+            self = .auth(hostname: command.hostname, tokenPath: command.tokenPath)
         case _ as RepoView:
             let configFile = try configFromFile()
             self = .repo(configFile: configFile)
@@ -64,5 +66,4 @@ public func run(arguments: [String]) async {
     } catch let error {
         Main.exit(withError: error)
     }
-    
 }

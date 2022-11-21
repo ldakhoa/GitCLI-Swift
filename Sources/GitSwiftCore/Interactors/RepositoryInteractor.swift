@@ -28,7 +28,7 @@ struct RepositoryInteractor {
             print("\(owner)/\(repository.name ?? "")")
             print("View this repository on GitHub: \(repository.cloneUrl ?? "")")
         } catch {
-            
+            print("Failed to get the repository: ", error)
         }
     }
 }

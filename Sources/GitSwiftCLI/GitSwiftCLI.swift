@@ -7,6 +7,7 @@ struct Main: ParsableCommand {
         abstract: "A Swift CLI tool to make your Git flow easier",
         version: version,
         subcommands: [
+            Auth.self,
             Repo.self,
             PullRequest.self,
             Label.self,
