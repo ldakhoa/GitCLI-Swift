@@ -7,7 +7,11 @@ extension NetworkSession {
         let requestBuilder = URLRequestBuilder(baseURL: baseURL)
         let logging = LoggingMiddleware(type: .info)
         let statusCodeValidation = StatusCodeValidationMiddleware()
-        let middlewares: [Middleware] = [logging, statusCodeValidation]
+        let middlewares: [Middleware] = [
+            logging,
+            statusCodeValidation,
+            ErrorDecoderMiddleware<GitHubError>(),
+        ]
         let result = NetworkSession(requestBuilder: requestBuilder, middlewares: middlewares)
         return result
     }
