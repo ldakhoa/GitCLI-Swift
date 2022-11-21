@@ -25,10 +25,10 @@ struct RepositoryInteractor {
             }
             
             let repository = try await controller.repo(owner: owner, repo: repo)
-            print("\(owner)/\(repository.name ?? "")")
-            print("View this repository on GitHub: \(repository.cloneUrl ?? "")")
+            UI.success("\(owner)/\(repository.name ?? "")")
+            UI.message("View this repository on GitHub: \(repository.cloneUrl ?? "")")
         } catch {
-            print("Failed to get the repository: ", error)
+            UI.error("Failed to get the repository: \(error)")
         }
     }
 }
