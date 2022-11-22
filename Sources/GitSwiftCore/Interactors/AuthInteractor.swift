@@ -10,7 +10,6 @@ struct AuthInteractor {
     private let controller: GitHubControlling
     private let fileRepository: FileRepository
     
-    
     init(
         tokenPath: String,
         hostname: String? = nil,
@@ -26,8 +25,16 @@ struct AuthInteractor {
     func loginWithToken() async {
         do {
             try await setTokenIfNeeded()
+            setHostnameIfNeeded()
+            
             let user = try await controller.loginWithToken()
-            UI.success("Login succeed with \(user.name ?? "Unknown")")
+            var uiMessage = "Login succeed with \(user.name ?? "Unknown")"
+            
+            if let hostname = hostname {
+                uiMessage += " at \(hostname)"
+            }
+            
+            UI.success(uiMessage)
         } catch {
             UI.error("Failed to sign in: \(error.localizedDescription)")
         }
@@ -36,7 +43,21 @@ struct AuthInteractor {
     private func setTokenIfNeeded() async throws {
         guard let path = makeTokenPath() else { return }
         let token = try await fileRepository.readAsync(from: path)
-        UserDefaultManagement.accessToken = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if token != UserDefaultManagement.accessToken {
+            UserDefaultManagement.accessToken = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+    
+    private func setHostnameIfNeeded() {
+        guard
+            let oldHostname = UserDefaultManagement.hostname,
+            oldHostname != self.hostname
+        else {
+            return
+        }
+        
+        UserDefaultManagement.hostname = hostname
     }
     
     private func makeTokenPath() -> String? {
