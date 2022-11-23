@@ -12,7 +12,7 @@ extension NetworkSession {
         guard let hostname = UserDefaultManagement.hostname else {
             return NetworkSession()
         }
-        return makeNetworkSession(fromURL: "\(hostname)/api/v3")
+        return makeNetworkSession(fromURL: hostname)
     }
     
     public static var defaultNetworkSession: NetworkSession {
