@@ -20,13 +20,12 @@ struct AuthInteractor {
         self.hostname = hostname
         self.controller = controller
         self.fileRepository = fileRepository
+        self.setHostnameIfNeeded()
     }
     
     func loginWithToken() async {
         do {
             try await setTokenIfNeeded()
-            setHostnameIfNeeded()
-            
             let user = try await controller.loginWithToken()
             var uiMessage = "Login succeed with \(user.name ?? "Unknown")"
             
@@ -50,14 +49,10 @@ struct AuthInteractor {
     }
     
     private func setHostnameIfNeeded() {
-        guard
-            let oldHostname = UserDefaultManagement.hostname,
-            oldHostname != self.hostname
-        else {
-            return
+        let oldHostname = UserDefaultManagement.hostname
+        if oldHostname == nil || oldHostname != self.hostname {
+            UserDefaultManagement.hostname = hostname
         }
-        
-        UserDefaultManagement.hostname = hostname
     }
     
     private func makeTokenPath() -> String? {
