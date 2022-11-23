@@ -2,6 +2,7 @@ import Foundation
 
 private struct UserDefaultKeys {
     static let accessToken = "gitcliswift_access_token"
+    static let hostname = "gitcliswift_hostname"
 }
 
 public final class UserDefaultManagement {
@@ -15,5 +16,10 @@ public final class UserDefaultManagement {
         set {
             shared?.setValue(newValue, forKey: Keys.accessToken)
         }
+    }
+    
+    public static var hostname: String? {
+        get { shared?.value(forKey: Keys.hostname) as? String }
+        set { shared?.setValue(newValue, forKey: Keys.hostname) }
     }
 }

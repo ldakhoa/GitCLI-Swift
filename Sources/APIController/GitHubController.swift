@@ -15,7 +15,9 @@ public final class GitHubController: GitHubControlling {
     
     // MARK: - Init
     
-    public init(session: NetworkableSession = NetworkSession.github) {
+    public init(
+        session: NetworkableSession = NetworkSession.github
+    ) {
         self.session = session
     }
     

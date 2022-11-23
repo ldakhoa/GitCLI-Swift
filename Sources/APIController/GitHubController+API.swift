@@ -19,10 +19,19 @@ extension GitHubController {
         var url: String {
             switch self {
             case .loginWithToken:
-                return "/user"
+                return buildURLString(fromPath: "/user")
             case let .repo(owner, repo):
-                return "/repos/\(owner)/\(repo)"
+                return buildURLString(fromPath: "/repos/\(owner)/\(repo)")
             }
+        }
+        
+        private func buildURLString(fromPath path: String) -> String {
+            if let hostname = UserDefaultManagement.hostname,
+               let hostnameURL = URL(string: hostname),
+               let url = URL(string: "/api/v3\(path)", relativeTo: hostnameURL) {
+                return url.absoluteString
+            }
+            return path
         }
         
         var method: Networkable.Method {
