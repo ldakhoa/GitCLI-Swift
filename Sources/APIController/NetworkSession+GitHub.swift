@@ -5,22 +5,7 @@ import Utilities
 // TODO: - Use config file
 extension NetworkSession {
     public static var github: NetworkSession {
-        makeNetworkSession(fromURL: "https://api.github.com")
-    }
-    
-    public static var githubEnterpriseServer: NetworkSession {
-        guard let hostname = UserDefaultManagement.hostname else {
-            return NetworkSession()
-        }
-        return makeNetworkSession(fromURL: hostname)
-    }
-    
-    public static var defaultNetworkSession: NetworkSession {
-        UserDefaultManagement.hostname == nil ? github : githubEnterpriseServer
-    }
-    
-    private static func makeNetworkSession(fromURL urlString: String) -> NetworkSession {
-        let baseURL = URL(string: urlString)
+        let baseURL = URL(string: "https://api.github.com")
         let requestBuilder = URLRequestBuilder(baseURL: baseURL)
         let logging = LoggingMiddleware(type: .info)
         let statusCodeValidation = StatusCodeValidationMiddleware()
