@@ -13,5 +13,5 @@ test.login:
 install.binary:
 		sh Scripts/install
 		
-install.nab
+install.nab:
 		sh Scripts/nab_install
