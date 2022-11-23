@@ -13,9 +13,9 @@
 - [ ] Delete
 
 ### Auth
-- [ ] Login
+- [x] Login
 - [ ] Logout
-- [ ] Hostname
+- [x] Hostname
 
 ### Pull Request
 - [ ] Create
