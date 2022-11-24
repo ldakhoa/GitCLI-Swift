@@ -8,6 +8,9 @@ public protocol GitHubControlling {
     
     /// Get the repository information.
     func repo(owner: String, repo: String) async throws -> Repository
+    
+    /// Create a pull request.
+    func createPullRequest(from request: PullRequest.Request) async throws -> PullRequest
 }
 
 public final class GitHubController: GitHubControlling {
@@ -29,6 +32,10 @@ public final class GitHubController: GitHubControlling {
     
     public func repo(owner: String, repo: String) async throws -> Repository {
         try await parseData(from: .repo(owner: owner, repo: repo))
+    }
+    
+    public func createPullRequest(from request: PullRequest.Request) async throws -> PullRequest {
+        try await parseData(from: .createPR(request: request))
     }
     
     // MARK: - Helpers

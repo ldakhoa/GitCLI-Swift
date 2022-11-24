@@ -16,5 +16,4 @@ struct PullRequestView: AsyncParsableCommand {
         commandName: "view",
         abstract: "Display the title, body, and other information about a pull request."
     )
-    
 }

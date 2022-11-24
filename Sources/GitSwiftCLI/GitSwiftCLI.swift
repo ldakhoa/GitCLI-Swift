@@ -10,26 +10,6 @@ struct Main: ParsableCommand {
             Auth.self,
             Repo.self,
             PullRequest.self,
-            Label.self,
-            Issue.self,
         ]
-    )
-}
-
-struct Label: ParsableCommand {
-    public static let configuration = CommandConfiguration(
-        abstract: "Work with GitHub labels",
-        discussion: """
-        gitswift label
-        """
-    )
-}
-
-struct Issue: ParsableCommand {
-    public static let configuration = CommandConfiguration(
-        abstract: "Work with GitHub issues",
-        discussion: """
-        gitswift issue
-        """
     )
 }

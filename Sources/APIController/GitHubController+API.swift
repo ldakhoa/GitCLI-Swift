@@ -1,11 +1,13 @@
 import Foundation
 import Networkable
+import Models
 import Utilities
 
 extension GitHubController {
     enum API: Request {
         case loginWithToken
         case repo(owner: String, repo: String)
+        case createPR(request: PullRequest.Request)
         
         // MARK: - Request
         
@@ -22,6 +24,8 @@ extension GitHubController {
                 return buildURLString(fromPath: "/user")
             case let .repo(owner, repo):
                 return buildURLString(fromPath: "/repos/\(owner)/\(repo)")
+            case let .createPR(request):
+                return buildURLString(fromPath: "/repos/\(request.owner)")
             }
         }
         
@@ -38,11 +42,18 @@ extension GitHubController {
             switch self {
             case .loginWithToken, .repo:
                 return .get
+            case .createPR:
+                return .post
             }
         }
         
         func body() throws -> Data? {
-            nil
+            switch self {
+            case let .createPR(request):
+                return try? request.toData()
+            default:
+                return nil
+            }
         }
     }
 }
