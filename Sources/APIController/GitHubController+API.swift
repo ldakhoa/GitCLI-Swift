@@ -4,10 +4,13 @@ import Models
 import Utilities
 
 extension GitHubController {
+    typealias PRRequest = PullRequest.Request
+    
     enum API: Request {
         case loginWithToken
         case repo(owner: String, repo: String)
-        case createPR(request: PullRequest.Request)
+        case createPR(request: PRRequest)
+        case prs(request: PRRequest)
         
         // MARK: - Request
         
@@ -26,6 +29,8 @@ extension GitHubController {
                 return buildURLString(fromPath: "/repos/\(owner)/\(repo)")
             case let .createPR(request):
                 return buildURLString(fromPath: "/repos/\(request.owner)")
+            case let .prs(request):
+                return buildURLString(fromPath: "/repos/\(request.owner)/\(request.repo)/pulls")
             }
         }
         
@@ -40,7 +45,7 @@ extension GitHubController {
         
         var method: Networkable.Method {
             switch self {
-            case .loginWithToken, .repo:
+            case .loginWithToken, .repo, .prs:
                 return .get
             case .createPR:
                 return .post

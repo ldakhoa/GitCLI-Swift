@@ -45,17 +45,33 @@ public struct PullRequest: Codable {
         public var owner: String
         public var repo: String
         public var pullNumber: UInt16?
-        public var title: String
-        public var body: String
+        public var title: String?
+        public var body: String?
         public var base: Base?
+        
+        public init(
+            owner: String,
+            repo: String,
+            pullNumber: UInt16? = nil,
+            title: String? = nil,
+            body: String? = nil,
+            base: Base? = nil
+        ) {
+            self.owner = owner
+            self.repo = repo
+            self.pullNumber = pullNumber
+            self.title = title
+            self.body = body
+            self.base = base
+        }
         
         public init(from decoder: Decoder) throws {
             let container: KeyedDecodingContainer<PullRequest.Request.CodingKeys> = try decoder.container(keyedBy: PullRequest.Request.CodingKeys.self)
             self.owner = try container.decode(String.self, forKey: PullRequest.Request.CodingKeys.owner)
             self.repo = try container.decode(String.self, forKey: PullRequest.Request.CodingKeys.repo)
             self.pullNumber = try container.decodeIfPresent(UInt16.self, forKey: PullRequest.Request.CodingKeys.pullNumber)
-            self.title = try container.decode(String.self, forKey: PullRequest.Request.CodingKeys.title)
-            self.body = try container.decode(String.self, forKey: PullRequest.Request.CodingKeys.body)
+            self.title = try container.decodeIfPresent(String.self, forKey: PullRequest.Request.CodingKeys.title)
+            self.body = try container.decodeIfPresent(String.self, forKey: PullRequest.Request.CodingKeys.body)
             self.base = try container.decodeIfPresent(Base.self, forKey: PullRequest.Request.CodingKeys.base)
         }
         
@@ -64,8 +80,8 @@ public struct PullRequest: Codable {
             try container.encode(self.owner, forKey: PullRequest.Request.CodingKeys.owner)
             try container.encode(self.repo, forKey: PullRequest.Request.CodingKeys.repo)
             try container.encodeIfPresent(self.pullNumber, forKey: PullRequest.Request.CodingKeys.pullNumber)
-            try container.encode(self.title, forKey: PullRequest.Request.CodingKeys.title)
-            try container.encode(self.body, forKey: PullRequest.Request.CodingKeys.body)
+            try container.encodeIfPresent(self.title, forKey: PullRequest.Request.CodingKeys.title)
+            try container.encodeIfPresent(self.body, forKey: PullRequest.Request.CodingKeys.body)
             try container.encodeIfPresent(self.base, forKey: PullRequest.Request.CodingKeys.base)
         }
         

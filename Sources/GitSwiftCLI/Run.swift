@@ -12,8 +12,9 @@ extension Command {
         case _ as RepoView:
             let configFile = try configFromFile()
             self = .repo(configFile: configFile)
-        case let command as PullRequestView:
-            self = .pullRequest
+        case _ as PullRequestView:
+            let configFile = try configFromFile()
+            self = .pullRequest(configFile: configFile, type: .view)
         default:
             return nil
         }

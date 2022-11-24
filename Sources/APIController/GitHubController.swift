@@ -11,6 +11,9 @@ public protocol GitHubControlling {
     
     /// Create a pull request.
     func createPullRequest(from request: PullRequest.Request) async throws -> PullRequest
+    
+    /// Get all pull requests from repo
+    func pullRequests(from request: PullRequest.Request) async throws -> [PullRequest]
 }
 
 public final class GitHubController: GitHubControlling {
@@ -36,6 +39,10 @@ public final class GitHubController: GitHubControlling {
     
     public func createPullRequest(from request: PullRequest.Request) async throws -> PullRequest {
         try await parseData(from: .createPR(request: request))
+    }
+    
+    public func pullRequests(from request: PullRequest.Request) async throws -> [PullRequest] {
+        try await parseData(from: .prs(request: request))
     }
     
     // MARK: - Helpers

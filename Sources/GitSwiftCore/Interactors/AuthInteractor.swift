@@ -20,7 +20,7 @@ struct AuthInteractor {
         self.hostname = hostname
         self.controller = controller
         self.fileRepository = fileRepository
-        self.setHostnameIfNeeded()
+//        self.setHostnameIfNeeded()
     }
     
     func loginWithToken() async {
